@@ -1,0 +1,41 @@
+{% extends 'extra.html'%}
+
+{% block content %}
+<div class="profile">	
+	Done with a session: | <a href="{{ url_for('logout') }}"> Logout</a>
+</div>
+<div class="container1">
+	<div class="screen">
+		<div class="screen__content">
+            <div class="regid">
+                <h5>Register your item</h5>
+            </div>
+			<form class="login1" action="{{ url_for('market') }}" method="post">
+				{% if message is defined and message %}
+			    <div class="alert alert-warning">{{ message }}</div>
+		        {% endif %}
+                <div class="">
+					<input type="text" class="login__input" placeholder="Product Name" name="name">
+				</div><br>
+                <div class="">
+					<input type="text" class="login__input" placeholder="Model" name="model">
+				</div><br>
+				<div class="">
+					<input type="text" class="login__input" placeholder="Barcode" name="barcode">
+				</div><br>
+                <div class="">
+					<input type="text" class="login__input" placeholder="Price" name="price">
+				</div><br><div class="">
+					<label></label>
+					<input type="text" class="login__input" placeholder="Description" name="description">
+				</div><br>
+
+				<button class="button login__submit">
+					<span class="button__text">Submit</span>
+					<i class=""></i>
+				</button>				
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
