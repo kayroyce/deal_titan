@@ -76,8 +76,8 @@
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">2</span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <strong class="position-absolute left-100 badge rounded-pill bg-light text-dark">{{session.name}}</strong>
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">5</span>
                     </a>
                 </div>
             </div>
@@ -86,15 +86,8 @@
     </nav>
     <!-- Close Header -->
 
-
-<div class="container">
-    <br>
-	<div class="profile">	
-        <h7>You are welcome, <span> "{{session.name}}"</span> </h6></h7>
-	</div>
-	<div class="profile">	
-		Done with a session: | <a href="{{ url_for('logout') }}"> Logout</a>
-	</div>
+<div class="container">	
+	Done with a session: | <a href="{{ url_for('logout') }}"> Logout</a>
 </div>
 <div class="container emp-profile">
     <form method="post">
@@ -127,10 +120,10 @@
             <div class="col-md-4">
                 <div class="profile-work">
                     <p>SELLS</p>
-                    <a href="#">Cloths</a><br/>
-                    <a href="#">Jewelries</a><br/>
+                    <a href="{{ url_for('shop') }}">Electronics</a><br/>
+                    <a href="{{ url_for('shop') }}">Phones</a><br/>
                     <p>Last seen</p>
-                    <a href="#">1hr ago..</a><br/>
+                    <a href="#">3hrs ago..</a><br/>
                 </div>
             </div>
             <div class="col-md-8">

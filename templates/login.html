@@ -85,6 +85,7 @@
 		<div class="screen__content">
             <div class="regid">
                 <h5>Login here</h5>
+                <h6>No Account? <a class="" href="{{ url_for('register') }}"> Register</a></h6>
             </div>
 			<form class="login" action="{{ url_for('login') }}" method="post">
                 {% if message is defined and message %}
@@ -104,7 +105,6 @@
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>				
 			</form>
-			<div class="checkbox mb-3">                      <h6>Do not have an account?</h6>                      <a class="btn btn-sm btn-secondary" href="{{ url_for('register') }}">Register</a>                 </div>
 			<div class="social-login">
 				<h5>login via</h5>
 				<div class="social-icons">

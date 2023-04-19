@@ -1,8 +1,8 @@
 {% extends 'extra.html' %}
 {% block content %}
     <!-- Modal -->
-    <div class="profile">	
-		Done with a session: | <a href="{{ url_for('logout') }}"> Logout</a>
+    <div class="container">	
+		Done with a session: | <a href="{{ url_for('user') }}"> User </a> | <a href="{{ url_for('logout') }}"> Logout </a> 
 	</div>
     <div class="modal fade bg-white" id="kayroyce_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -145,10 +145,10 @@
                                     <p class="text-muted"><strong>Apple 16.2" MacBook Pro with M1 Pro Chip</strong></p>
                                 </li>
                             </ul>
-
                             <h6>Description:</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp incididunt ut labore et dolore magna aliqua. 
-                                Quis ipsum suspendisse. Donec condimentum elementum convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
+                            <p>The MacBook Pro 16" is now powered by the M1 Pro or M1 Max chip, two revolutionary chips that delivers professional performance on a notebook computer, 
+                                outstripping even the M1 MacBook Pro. The M1 Pro offers up to a 10-core CPU and up to a 16-core GPU, with access to up to 32GB of unified onboard memory and up to 200GBps memory bandwidth. 
+                            </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Avaliable Color :</h6>
@@ -166,7 +166,6 @@
                                 <li>USB: Type-C</li>
                                 <li>SIZE: 16.1</li>
                                 <li>CAMERA: Full HD 1080p</li>
-                                <li>Up to 21 hours of video playback</li>
                             </ul>
 
                             <form action="" method="GET">

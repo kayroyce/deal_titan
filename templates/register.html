@@ -85,6 +85,7 @@
 		<div class="screen__content">
             <div class="regid">
                 <h5>Register here</h5>
+                <h6>Have an account? <a class="" href="{{ url_for('login') }}"> Login </a></h6>
             </div>
 			<form class="login1" action="{{ url_for('register') }}" method="post">
 				{% if message is defined and message %}
@@ -95,7 +96,7 @@
 					<input type="text" class="login__input" placeholder="Name" name="name">
 				</div>
                 <div class="login__field1">
-					<i class="login__icon fas fa-user"></i>
+					<i class="login__icon fas fa-envelope"></i>
 					<input type="text" class="login__input" placeholder="Email" name="email">
 				</div>
 				<div class="login__field1">
@@ -111,7 +112,6 @@
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>				
 			</form>
-			<div class="checkbox mb-3">                      <h6>Do have an account?</h6>                      <a class="btn btn-sm btn-secondary" href="{{ url_for('login') }}">Login</a>                 </div>
 			<div class="social-login">
 				<h5>Register via</h5>
 				<div class="social-icons">

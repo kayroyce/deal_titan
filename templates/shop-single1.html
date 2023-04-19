@@ -1,7 +1,7 @@
 {% extends 'extra.html' %}
 {% block content %}
-<div class="profile">	
-    Done with a session: | <a href="{{ url_for('logout') }}"> Logout</a>
+<div class="container">	
+    Done with a session: | <a valign="right" href="{{ url_for('user') }}"> User </a> | <a href="{{ url_for('logout') }}"> Logout </a> 
 </div>
     <!-- Modal -->
     <div class="modal fade bg-white" id="kayroyce_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
