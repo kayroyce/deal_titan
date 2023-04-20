@@ -23,8 +23,8 @@
         <div class="col-md-6 m-auto text-center">
             <h1 class="h1">Contact Us</h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                We are an online store with pickups outlets opening soon at the full lunch of our system.
+                You are just a few clicks away from the most exciting stores and dealers in the world.
             </p>
         </div>
     </div>
@@ -34,6 +34,9 @@
         <div class="row py-5">
             <form class="col-md-9 m-auto" method="post" role="form">
                 <div><h5>We want to hear from you</h5></div><br>
+                {% if message is defined and message %}
+			    <div class="alert alert-warning">{{ message }}</div>
+		        {% endif %}
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name">

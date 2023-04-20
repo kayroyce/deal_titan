@@ -31,9 +31,22 @@ def shopsingle():
 def shopsingle1():
     return render_template("shop-single1.html")
 
-@app.route("/contact")
+@app.route("/contact", methods =[ 'POST','GET'])
 def contact():
-    return render_template("contact.html")
+    message = ''
+    if request.method == 'POST' and 'name' in request.form and 'email' in request.form and 'subject' in request.form and 'message' in request.form:
+        name = request.form['name']
+        email = request.form['email']
+        subject = request.form['subject']
+        message = request.form['message']
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('INSERT INTO contact VALUES (NULL, %s, %s, %s, %s)', (name, email, subject, message))
+        mysql.connection.commit()
+        message = 'You have successfully sent !'
+        return render_template("contact.html", message = message)
+    elif request.method == 'POST':
+        message = 'Please fill out the form !'
+    return render_template('contact.html', message = message)
 
 @app.route("/shop")
 def shop():
@@ -65,6 +78,7 @@ def market():
     elif request.method == 'POST':
         message = 'Please fill out the form !'
     return render_template('market.html', message = message)
+
 
 @app.route("/login", methods =["GET", "POST"])
 def login():

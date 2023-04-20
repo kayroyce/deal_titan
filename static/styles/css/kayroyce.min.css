@@ -53,6 +53,11 @@ a,body,div,input,label,li,p,ul{
 #kayroyce_nav_top *{
     font-size:.9em!important
 }
+
+#kayroyce_main_nav{
+    color:#212934;
+    padding-left: 120px;
+
 #kayroyce_main_nav a{
     color:#212934
 }
