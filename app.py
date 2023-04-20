@@ -1,121 +1,83 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from flask_mysqldb import MySQL
-import MySQLdb.cursors
-import re
+from typing import Tuple, Union
+from flask import Flask, jsonify, abort, request, redirect
+from auth import Auth
 
 app = Flask(__name__)
-app.secret_key = "screen"
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'alx'
+AUTH = Auth()
 
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-mysql = MySQL(app)
+@app.route('/', methods=['GET'], strict_slashes=False)
+def index() -> str:
+    return jsonify({"message": "Bienvenue"})
 
-@app.route("/")
-def home():
-    return render_template("index.html")
 
-@app.route("/aboutus")
-def about():
-    return render_template("about.html")
+@app.route('/users', methods=['POST'])
+def register_user() -> Tuple[str, int]:
+    """Registers a new user if it does not exist before"""
+    email = request.form.get('email')
+    password = request.form.get('password')
 
-@app.route("/shopsingle")
-def shopsingle():
-    return render_template("shop-single.html")
+    try:
+        user = AUTH.register_user(email, password)
+    except ValueError:
+        return jsonify({"message": "email already registered"}), 400
 
-@app.route("/shopsingle1")
-def shopsingle1():
-    return render_template("shop-single1.html")
+    response = {"email": email, "message": "user created"}
+    return jsonify(response)
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
 
-@app.route("/shop")
-def shop():
-    return render_template("shop.html")
+@app.route('/sessions', methods=['POST'], strict_slashes=False)
+def login() -> str:
+    '''implements login functionality
+    Returns:
+        str: JSON payload with session_id
+    '''
+    email = request.form.get('email')
+    password = request.form.get('password')
+    valid_login = AUTH.valid_login(email, password)
 
-@app.route("/user")
-def user():
-    return render_template("user.html")
+    if not valid_login:
+        abort(401)
 
-@app.route('/market', methods =['GET', 'POST'])
-def market():
-    message = ''
-    if request.method == 'POST' and 'name' in request.form and 'model' in request.form and 'barcode' in request.form and 'price' in request.form:
-        name = request.form['name']
-        model = request.form['model']
-        barcode = request.form['barcode']
-        price = request.form['price']
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM market WHERE barcode = %s', (barcode, ))
-        account = cursor.fetchone()
-        if account:
-            message = 'Account already exists !'
-        else:
-            cursor.execute('INSERT INTO user VALUES (NULL, %s, %s, %s, %s)', (name, model, barcode, price))
-            mysql.connection.commit()
-            message = 'You have successfully queue an item !'
-            return render_template("user.html", message = message)
-    elif request.method == 'POST':
-        message = 'Please fill out the form !'
-    return render_template('market.html', message = message)
+    session_id = AUTH.create_session(email)
+    response = jsonify({'email': email, 'message': 'logged in'})
+    response.set_cookie('session_id', session_id)
+    return response
 
-@app.route("/login", methods =["GET", "POST"])
-def login():
-    message = ""
-    if request.method == "POST" and "email" in request.form and "password" in request.form:
-        email = request.form["email"]
-        password = request.form["password"]
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute("SELECT * FROM user WHERE email = % s AND password = % s", (email, password, ))
-        user = cursor.fetchone()
-        if user:
-            session["loggedin"] = True
-            session["userid"] = user["userid"]
-            session["name"] = user["name"]
-            session["email"] = user["email"]
-            message = "Logged in successfully !"
-            return render_template("user.html", message = message)
-        else:
-            message = "Please enter correct email / password !"
-    return render_template("login.html", message = message)
 
-@app.route('/logout')
-def logout():
-    session.pop('loggedin', None)
-    session.pop('userid', None)
-    session.pop('email', None)
-    return redirect(url_for('login'))
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
+def logout() -> Union[abort, redirect]:
+    """logout basically means to set the session_id to None
 
-@app.route('/register', methods =['GET', 'POST'])
-def register():
-    message = ''
-    if request.method == 'POST' and 'name' in request.form and 'password' in request.form and 'email' in request.form and 'repassword' in request.form:
-        name = request.form['name']
-        password = request.form['password']
-        repassword = request.form['repassword']
-        email = request.form['email']
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM user WHERE email = % s', (email, ))
-        account = cursor.fetchone()
-        if account:
-            message = 'Account already exists !'
-        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
-            message = 'Invalid email address !'
-        elif not name or not password or not email:
-            message = 'Please fill out the form !'
-        else:
-            cursor.execute('INSERT INTO user VALUES (NULL, % s, % s, % s, % s)', (name, email, password, repassword))
-            mysql.connection.commit()
-            message = 'You have successfully registered !'
-    elif request.method == 'POST':
-        message = 'Please fill out the form !'
-    return render_template('register.html', message = message)
+    Returns:
+        Union[abort, redirect]: 403 if session_id or user is None
+        else redirect to '/'
+    """
+    session_id = request.cookies.get('session_id')
+    user = AUTH.get_user_from_session_id(session_id)
+
+    if session_id is None or user is None:
+        abort(403)
+
+    AUTH.destroy_session(user.id)
+    return redirect('/')
+
+
+@app.route('/profile', strict_slashes=False)
+def profile() -> str:
+    """access profile if session id exists
+    Returns:
+        str: user email
+    """
+    session_id = request.cookies.get('session_id')
+    user = AUTH.get_user_from_session_id(session_id)
+
+    if session_id is None or user is None:
+        abort(403)
+
+    return jsonify({'email': user.email})
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
