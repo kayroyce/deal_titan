@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-"""
-Main file
-"""
 import requests
 
 
@@ -129,6 +126,11 @@ def update_password(email: str, reset_token: str,
         assert(r.json() == {"email": email, "message": "Password updated"})
     else:
         assert(r.status_code == 403)
+
+
+EMAIL = "towoeye50@email.com"
+PASSWD = "gur72"
+NEW_PASSWD = "tfrankie333"
 
 
 if __name__ == "__main__":
