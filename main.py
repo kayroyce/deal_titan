@@ -128,9 +128,9 @@ def update_password(email: str, reset_token: str,
         assert(r.status_code == 403)
 
 
-EMAIL = "towoeye50@email.com"
-PASSWD = "gur72"
-NEW_PASSWD = "tfrankie333"
+EMAIL = "guillaume@holberton.io"
+PASSWD = "b4l0u"
+NEW_PASSWD = "t4rt1fl3tt3"
 
 
 if __name__ == "__main__":
