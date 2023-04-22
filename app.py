@@ -1,12 +1,16 @@
 import os
+import stripe
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 
 app = Flask(__name__)
+
 env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
 app.config.from_object(env_config)
+
+
 
 app.secret_key = "screen"
 
