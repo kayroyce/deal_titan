@@ -29,6 +29,17 @@
 					<label></label>
 					<input type="text" class="login__input" placeholder="Description" name="description">
 				</div><br>
+		<div class="">
+					<label></label>
+					<input type="text" class="login__input" placeholder="Buy" name="buy">
+				</div><br>
+					<form class="login" action="{{ url_for('market') }}" method="post">
+    					<!-- existing form inputs... -->
+    						<button class="button buy__submit">
+        						<span class="button__text">Buy</span>
+        						<i class="buy__field1"></i>
+    						</button>
+					</form>
 
 				<button class="button login__submit">
 					<span class="button__text">Submit</span>

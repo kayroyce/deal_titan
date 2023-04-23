@@ -66,19 +66,20 @@ def user():
 @app.route('/market', methods =[ 'POST','GET'])
 def market():
     message = ''
-    if request.method == 'POST' and 'name' in request.form and 'model' in request.form and 'barcode' in request.form and 'price' in request.form and 'description' in request.form:
+    if request.method == 'POST' and 'name' in request.form and 'model' in request.form and 'barcode' in request.form and 'price' in request.form and 'description' in request.form and 'buy' in request.form:
         name = request.form['name']
         model = request.form['model']
         barcode = request.form['barcode']
         price = request.form['price']
         description = request.form['description']
+        buy = request.form['buy']
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM market WHERE barcode = %s', (barcode, ))
         market = cursor.fetchone()
         if market:
             message = 'Account already exists !'
         else:
-            cursor.execute('INSERT INTO market VALUES (NULL, %s, %s, %s, %s, %s)', (name, model, barcode, price, description))
+            cursor.execute('INSERT INTO market VALUES (NULL, %s, %s, %s, %s, %s)', (name, model, barcode, price, description, buy))
             mysql.connection.commit()
             message = 'You have successfully queue an item !'
             return render_template("user.html", message = message)
