@@ -1,16 +1,11 @@
-import os
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+import os
+import stripe
 
 app = Flask(__name__)
-
-env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
-app.config.from_object(env_config)
-
-
-
 app.secret_key = "screen"
 
 app.config['MYSQL_HOST'] = 'localhost'
@@ -55,9 +50,12 @@ def contact():
         message = 'Please fill out the form !'
     return render_template('contact.html', message = message)
 
-@app.route("/shop")
+@app.route("/shop", methods =[ 'POST','GET'])
 def shop():
-    return render_template("shop.html")
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute('SELECT id, name, model, barcode, price, description FROM market')
+    marketing = cur.fetchall()
+    return render_template("shop.html", marketing = marketing)
 
 @app.route("/user")
 def user():
@@ -66,20 +64,19 @@ def user():
 @app.route('/market', methods =[ 'POST','GET'])
 def market():
     message = ''
-    if request.method == 'POST' and 'name' in request.form and 'model' in request.form and 'barcode' in request.form and 'price' in request.form and 'description' in request.form and 'buy' in request.form:
+    if request.method == 'POST' and 'name' in request.form and 'model' in request.form and 'barcode' in request.form and 'price' in request.form and 'description' in request.form:
         name = request.form['name']
         model = request.form['model']
         barcode = request.form['barcode']
         price = request.form['price']
         description = request.form['description']
-        buy = request.form['buy']
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM market WHERE barcode = %s', (barcode, ))
         market = cursor.fetchone()
         if market:
             message = 'Account already exists !'
         else:
-            cursor.execute('INSERT INTO market VALUES (NULL, %s, %s, %s, %s, %s)', (name, model, barcode, price, description, buy))
+            cursor.execute('INSERT INTO market VALUES (NULL, %s, %s, %s, %s, %s)', (name, model, barcode, price, description))
             mysql.connection.commit()
             message = 'You have successfully queue an item !'
             return render_template("user.html", message = message)
