@@ -393,6 +393,39 @@
 
         </div>
     </div>
+
+    <table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+	    <th scope="col">Model</th>
+            <th scope="col">Barcode</th>
+            <th scope="col">Price</th>
+	    <th scope="col">Description</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for market in marketing %}
+        <tr>
+                <td>{{market.id }}</td>
+                <td>{{market.name}}</td>
+		<td>{{market.model}}</td>
+                <td>{{market.barcode}}</td>
+                <td>{{market.price}}$</td>
+		<td>{{market.description}}</td>
+                <td>
+                        <button class= "btn btn-outline btn-info">More Info</button>
+                        <button class= "btn btn-outline btn-success">Purchase This Item</button>
+                </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+        </table>
     <!-- End Content -->
 
     <!-- Start Brands -->
