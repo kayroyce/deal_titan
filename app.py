@@ -25,9 +25,12 @@ def home():
 def about():
     return render_template("about.html")
 
-@app.route("/shopsingle")
+@app.route("/shopsingle", methods =[ 'POST','GET'])
 def shopsingle():
-    return render_template("shop-single.html")
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute('SELECT name, model, barcode, price, description FROM market')
+    marketing = cur.fetchall()
+    return render_template("shop-single.html", marketing = marketing)
 
 @app.route("/shopsingle1")
 def shopsingle1():

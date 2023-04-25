@@ -52,7 +52,7 @@ body, ul, li, p, a, label, input, div {
 #kayroyce_main_nav .navbar .nav-icon { margin-right: 20px;}
 
 /* Hero Carousel */
-#template-mo-zay-hero-carousel { background: #efefef !important;}
+#dealtitan-hero-carousel { background: #efefef !important;}
 
 /* Accordion */
 .kayroyce-accordion a { color: #000;}
@@ -97,18 +97,18 @@ body, ul, li, p, a, label, input, div {
 }
 
 /* Carousel Hero */
-#template-mo-zay-hero-carousel .carousel-indicators li {
+#dealtitan-hero-carousel .carousel-indicators li {
   margin-top: -50px;
   background-color: var(--icon-color);
 }
-#template-mo-zay-hero-carousel .carousel-control-next i,
-#template-mo-zay-hero-carousel .carousel-control-prev i {
+#dealtitan-hero-carousel .carousel-control-next i,
+#dealtitan-hero-carousel .carousel-control-prev i {
   color: var(--icon-color) !important;
   font-size: 2.8em !important;
 }
 
 /* Carousel Brand */
-.tempaltemo-carousel .h1 {
+.dealtitan-carousel .h1 {
   font-size: .5em !important;
   color: #000 !important;
 }
@@ -123,23 +123,23 @@ body, ul, li, p, a, label, input, div {
 .form-control { border: 1px solid #e8e8e8;}
 
 /* Footer */
-#tempaltemo_footer a { color: #dcdde1;}
-#tempaltemo_footer a:hover { color: var(--icon-color);}
-#tempaltemo_footer ul.footer-link-list li { padding-top: 10px;}
-#tempaltemo_footer ul.footer-icons li {
+#dealtitan_footer a { color: #dcdde1;}
+#dealtitan_footer a:hover { color: var(--icon-color);}
+#dealtitan_footer ul.footer-link-list li { padding-top: 10px;}
+#dealtitan_footer ul.footer-icons li {
   width: 2.6em;
   height: 2.6em;
   line-height: 2.6em;
 }
-#tempaltemo_footer ul.footer-icons li:hover {
+#dealtitan_footer ul.footer-icons li:hover {
   background-color: #cfd6e1;
   transition: .5s;
 }
-#tempaltemo_footer ul.footer-icons li:hover i {
+#dealtitan_footer ul.footer-icons li:hover i {
   color: #212934;
   transition: .5s;
 }
-#tempaltemo_footer .border-light { border-color: #4d5a6e !important;}
+#dealtitan_footer .border-light { border-color: #4d5a6e !important;}
 
 /*
 Extra small devices (portrait phones, less than 576px)
@@ -156,7 +156,7 @@ No media query since this is the default in Bootstrap
 }
 
 @media (min-width: 576px) {
-  .tempaltemo-carousel .h1 { font-size: 1em !important;}
+  .dealtitan-carousel .h1 { font-size: 1em !important;}
 }
 
 /*// Medium devices (tablets, 768px and up)*/
@@ -167,7 +167,7 @@ No media query since this is the default in Bootstrap
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
   #kayroyce_main_nav .navbar-nav {max-width: 550px;}
-  #template-mo-zay-hero-carousel .carousel-item {min-height: 30rem !important;}
+  #dealtitan-hero-carousel .carousel-item {min-height: 30rem !important;}
   .product-wap .h3, .product-wap li, .product-wap i, .product-wap p {font-size: 18px !important;}
   .product-wap .product-color-dot {
     width: 12px;

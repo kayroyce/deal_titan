@@ -68,7 +68,7 @@ a,body,div,input,label,li,p,ul{
 #kayroyce_main_nav .navbar .nav-icon{
     margin-right:20px
 }
-#template-mo-zay-hero-carousel{
+#dealtitan-hero-carousel{
     background:#efefef!important
 }
 .kayroyce-accordion a{
@@ -124,16 +124,16 @@ a,body,div,input,label,li,p,ul{
 .brand-img:hover{
     filter:grayscale(0);opacity:1
 }
-#template-mo-zay-hero-carousel .carousel-indicators li{
+#dealtitan-hero-carousel .carousel-indicators li{
     margin-top:-50px;
     background-color:#59ab6e
 }
-#template-mo-zay-hero-carousel .carousel-control-next i,
-#template-mo-zay-hero-carousel .carousel-control-prev i{
+#dealtitan-hero-carousel .carousel-control-next i,
+#dealtitan-hero-carousel .carousel-control-prev i{
     color:#59ab6e !important;
     font-size:2.8em !important
 }
-.tempaltemo-carousel .h1{
+.dealtitan-carousel .h1{
     font-size:.5em!important;
     color:#000!important
 }
@@ -151,28 +151,28 @@ a,body,div,input,label,li,p,ul{
 .form-control{
     border:1px solid #e8e8e8
 }
-#tempaltemo_footer a{
+#dealtitan_footer a{
     color:#dcdde1
 }
-#tempaltemo_footer a:hover{
+#dealtitan_footer a:hover{
     color:#68bb7d
 }
-#tempaltemo_footer ul.footer-link-list li{
+#dealtitan_footer ul.footer-link-list li{
     padding-top:10px
 }
-#tempaltemo_footer ul.footer-icons li{
+#dealtitan_footer ul.footer-icons li{
     width:2.6em;
     height:2.6em;
     line-height:2.6em
 }
-#tempaltemo_footer ul.footer-icons li:hover{
+#dealtitan_footer ul.footer-icons li:hover{
     background-color:#cfd6e1;
     transition:.5s
 }
-#tempaltemo_footer ul.footer-icons li:hover i{
+#dealtitan_footer ul.footer-icons li:hover i{
     color:#212934;
     transition:.5s
-}#tempaltemo_footer .border-light{
+}#dealtitan_footer .border-light{
     border-color:#2d343f!important
 }
 .product-wap .h3,.product-wap i,.product-wap li,.product-wap p{
@@ -182,7 +182,7 @@ a,body,div,input,label,li,p,ul{
     width:6px;height:6px
 }
 @media (min-width:576px){
-    .tempaltemo-carousel .h1{
+    .dealtitan-carousel .h1{
         font-size:1em!important
     }
 }
@@ -195,7 +195,7 @@ a,body,div,input,label,li,p,ul{
     #kayroyce_main_nav .navbar-nav{
         max-width:550px
     }
-    #template-mo-zay-hero-carousel .carousel-item{
+    #dealtitan-hero-carousel .carousel-item{
         min-height:30rem!important
     }
     .product-wap .h3,.product-wap i,

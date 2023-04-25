@@ -126,16 +126,19 @@
                 <!-- col end -->
                 <div class="col-lg-7 mt-5">
                     <div class="card">
+                        
                         <div class="card-body">
-                            <h1 class="h2">Laptop Shop</h1>
-                            <p class="h3 py-2">#1,425,450.00</p>
+                            {% for market in marketing %}
+                            <div>
+                                <h1 class="h2">{{market.name}}</h1>
+                            <p class="h3 py-2">{{market.model}}</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
+                                <i class="fa fa-star text-secondary"></i>
+                                <span class="list-inline-item text-dark">Rating 3.8 | 6 Comments</span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
@@ -146,8 +149,7 @@
                                 </li>
                             </ul>
                             <h6>Description:</h6>
-                            <p>The MacBook Pro 16" is now powered by the M1 Pro or M1 Max chip, two revolutionary chips that delivers professional performance on a notebook computer, 
-                                outstripping even the M1 MacBook Pro. The M1 Pro offers up to a 10-core CPU and up to a 16-core GPU, with access to up to 32GB of unified onboard memory and up to 200GBps memory bandwidth. 
+                            <p>{{market.description}}
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
@@ -160,13 +162,13 @@
 
                             <h6>Specification:</h6>
                             <ul class="list-unstyled pb-3">
-                                <li>OS: Machintosh</li>
                                 <li>HHD: 1TB SSD</li>
                                 <li>CORE: M1 Pro, 32-core GPU</li>
                                 <li>USB: Type-C</li>
                                 <li>SIZE: 16.1</li>
-                                <li>CAMERA: Full HD 1080p</li>
                             </ul>
+                            </div>
+                            {% endfor %}
 
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
@@ -196,6 +198,7 @@
                             </form>
 
                         </div>
+                    
                     </div>
                 </div>
             </div>

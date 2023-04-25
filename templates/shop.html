@@ -35,7 +35,7 @@
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Saler's Corner</a></li>
+                            <li><a class="text-decoration-none" href="#">Seller's Corner</a></li>
                             <li><a class="text-decoration-none" href="#">Buyer's Corner</a></li>
                         </ul>
                     </li>
@@ -77,7 +77,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                {% for market in marketing %}
+                <div class="row-auto flex-row">
                     <div class="col-md-4-1">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
@@ -91,9 +92,10 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="{{ url_for('shopsingle') }}" class="h3 text-decoration-none">Macbook Pro</a>
+                                <a href="{{ url_for('shopsingle') }}" class="h3 text-decoration-none">{{market.name}}</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M1 Pro</li>
+                                    <li>{{market.model}}</li><br>
+                                    
                                     <li class="pt-2">
                                         <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
                                         <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
@@ -102,7 +104,9 @@
                                         <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
                                     </li>
                                 </ul>
+                                <p>{{market.barcode}}</p>
                                 <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                   
                                     <li>
                                         <i class="text-warning fa fa-star"></i>
                                         <i class="text-warning fa fa-star"></i>
@@ -111,271 +115,12 @@
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
                                 </ul>
-                                <p class="text-center mb-0">#1,425,450.00</p>
+                                <p class="text-center mb-0">#{{market.price}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4-1">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="static/styles/img/ip_02.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="{{ url_for('shopsingle') }}"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="{{ url_for('shopsingle') }}"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="{{ url_for('shopsingle') }}"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="{{ url_for('shopsingle') }}" class="h3 text-decoration-none">IPhone XS</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>Gold/Black</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">#250,000.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4-1">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="static/styles/img/ip_03.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="{{ url_for('shopsingle') }}" class="h3 text-decoration-none">IPhone Pro Max</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>Gray/White</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">#950,000.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4-1">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="static/styles/img/ip_04.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="{{ url_for('shopsingle') }}"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="{{ url_for('shopsingle') }}"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="{{ url_for('shopsingle') }}"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="{{ url_for('shopsingle') }}" class="h3 text-decoration-none">Samsung S10</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>Gold/White</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">#160.000.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4-1">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="static/styles/img/ip_05.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="#" class="h3 text-decoration-none">Samsung S23</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>Gray/Nlack/White</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">#990,000.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4-1">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="static/styles/img/tv_01.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="#" class="h3 text-decoration-none">Plasma TV</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>Amani 32</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">#55,000.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4-1">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="static/styles/img/dr_01.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="{{ url_for('shopsingle1') }}"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="{{ url_for('shopsingle1') }}"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="{{ url_for('shopsingle1') }}"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="#" class="h3 text-decoration-none">Mixfeer Vintage</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">#1,550.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4-1">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="static/styles/img/sh_01.jpg">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="#" class="h3 text-decoration-none">Men Shoe</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>42/43/44/45</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">#32,750.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
+                {% endfor %}
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
                         <li class="page-item disabled">
@@ -394,40 +139,6 @@
         </div>
     </div>
 
-    <table class="table table-hover table-dark">
-    <thead>
-        <tr>
-            <!-- Your Columns HERE -->
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-	    <th scope="col">Model</th>
-            <th scope="col">Barcode</th>
-            <th scope="col">Price</th>
-	    <th scope="col">Description</th>
-            <th scope="col">Options</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Your rows inside the table HERE: -->
-        {% for market in marketing %}
-        <tr>
-                <td>{{market.id }}</td>
-                <td>{{market.name}}</td>
-		<td>{{market.model}}</td>
-                <td>{{market.barcode}}</td>
-                <td>{{market.price}}$</td>
-		<td>{{market.description}}</td>
-                <td>
-                        <button class= "btn btn-outline btn-info">More Info</button>
-                        <button class= "btn btn-outline btn-success">Purchase This Item</button>
-                </td>
-        </tr>
-        {% endfor %}
-
-    </tbody>
-        </table>
-    <!-- End Content -->
-
     <!-- Start Brands -->
     <section class="bg-light py-5">
         <div class="container my-4">
@@ -439,7 +150,7 @@
                         Our brands includes the best around the globel.
                     </p>
                 </div>
-                <div class="col-lg-9 m-auto tempaltemo-carousel">
+                <div class="col-lg-9 m-auto dealtitan-carousel">
                     <div class="row d-flex flex-row">
                         <!--Controls-->
                         <div class="col-1 align-self-center">
@@ -520,7 +231,7 @@
 
                         <!--Controls-->
                         <div class="col-1 align-self-center">
-                            <a class="h1" href="#multi-item-example" role="button" data-bs-slide="next">
+                            <a class="h1" href="#" role="button" data-bs-slide="next">
                                 <i class="text-light fas fa-chevron-right"></i>
                             </a>
                         </div>
