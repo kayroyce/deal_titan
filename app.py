@@ -3,6 +3,11 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 import os
+import stripe
+
+publishable_key = 'pk_test_51N0L1ICDqTHHVoreuFuzby1LMly59U7GQNPfM2kaNvLDkDyWsKGvJldVNlcXFOhJ7kwrnaVaaXoea4Hhluy3pa9000XXVuHYgJ'
+
+stripe.api_key = 'sk_test_51N0L1ICDqTHHVorep6O29dlON7lhF5EdyMU8ZukpN5Odbudr2WArnORDT2wum2dEFPrc1vfJ7NszWKDVDGuXjYqA00qys6wplI'
 
 app = Flask(__name__)
 app.secret_key = "screen"
@@ -20,16 +25,39 @@ mysql = MySQL(app)
 def home():
     return render_template("index.html")
 
+
+@app.route("/payment", methods =['POST'])
+def payment():
+    amount = request.form.get('price')
+    description = request.form.get('description')
+    customer = stripe.Customer.create(
+            email= request.form['stripeEmail'],
+            source= request.form['stripeToken'],
+)
+    charge = stripe.Charge.create(
+            customer = customer.id,
+            description = description,
+            amount = amount, currency='usd',
+            )
+    return redirect(url_for('thanks'))
+
+@app.route('/thanks')
+def thanks():
+    return render_template('thanks.html')
+
 @app.route("/aboutus")
 def about():
     return render_template("about.html")
 
-@app.route("/shopsingle", methods =[ 'POST','GET'])
+@app.route("/shopsingle")
 def shopsingle():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute('SELECT name, model, barcode, price, description FROM market')
+    cur.execute('SELECT id, name, model, barcode, price, description FROM market')
     marketing = cur.fetchall()
-    return render_template("shop-single.html", marketing = marketing)
+
+    cur.execute('SELECT id, name, model, barcode, price, description FROM marketdisplay')
+    marketingdisplay = cur.fetchall()
+    return render_template("shop-single.html", marketing = marketing, marketingdisplay = marketingdisplay )
 
 @app.route("/shopsingle1")
 def shopsingle1():
@@ -57,7 +85,10 @@ def shop():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute('SELECT id, name, model, barcode, price, description FROM market')
     marketing = cur.fetchall()
-    return render_template("shop.html", marketing = marketing)
+
+    cur.execute('SELECT id, name, model, barcode, price, description FROM marketdisplay')
+    marketingdisplay = cur.fetchall()
+    return render_template("shop.html", marketing = marketing, marketingdisplay = marketingdisplay )
 
 @app.route("/user")
 def user():
@@ -80,6 +111,10 @@ def market():
         else:
             cursor.execute('INSERT INTO market VALUES (NULL, %s, %s, %s, %s, %s)', (name, model, barcode, price, description))
             mysql.connection.commit()
+
+            cursor.execute('INSERT INTO marketdisplay VALUES (NULL, %s, %s, %s, %s, %s)', (name, model, barcode, price, description))
+            mysql.connection.commit()
+
             message = 'You have successfully queue an item !'
             return render_template("user.html", message = message)
     elif request.method == 'POST':

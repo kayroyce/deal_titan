@@ -138,14 +138,14 @@
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-secondary"></i>
                                 <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">Rating 3.8 | 6 Comments</span>
+                                <span class="list-inline-item text-dark">Rating 3.8 | No Comments</span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Brand:</h6>
+                                    <h6>Price:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Apple 16.2" MacBook Pro with M1 Pro Chip</strong></p>
+                                    <p class="text-muted"><strong>$ {{marketingdisplay[loop.index0]['price']}}</strong></p>
                                 </li>
                             </ul>
                             <h6>Description:</h6>
@@ -186,13 +186,26 @@
                                     </div>
                                 </div>
                                 <div class="row pb-3">
+                                    {% for _ in marketing %}
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">
-                                            Buy
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="{{marketing[loop.index0]['price']}}">
+                                            <script
+                                                src="https://checkout.stripe.com/checkout.js"
+                                                class="stripe-button"
+                                                data-key="pk_test_51N0L1ICDqTHHVoreuFuzby1LMly59U7GQNPfM2kaNvLDkDyWsKGvJldVNlcXFOhJ7kwrnaVaaXoea4Hhluy3pa9000XXVuHYgJ"
+                                                data-name="{{marketing[loop.index0]['name']}}"
+                                                data-description="{{marketing[loop.index0]['description']}}"
+                                                data-amount="{{marketing.price}}"
+                                                data-currency="usd"
+                                                data-label="But Item">
+                                            </script>
                                         </button>
                                     </div>
+                                    {% endfor %}
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">
+                                            Add to cart
+                                        </button>
                                     </div>
                                 </div>
                             </form>
