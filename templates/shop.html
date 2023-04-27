@@ -184,7 +184,7 @@
                                         <i class="text-warning fa fa-star"></i>
                                         <i class="text-warning fa fa-star"></i>
                                         <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
                                 </ul>
@@ -258,7 +258,7 @@
                                         <i class="text-warning fa fa-star"></i>
                                         <i class="text-warning fa fa-star"></i>
                                         <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
                                 </ul>
@@ -294,7 +294,7 @@
                                     <li>
                                         <i class="text-warning fa fa-star"></i>
                                         <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
                                         <i class="text-muted fa fa-star"></i>
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
@@ -368,7 +368,7 @@
                                     <li>
                                         <i class="text-warning fa fa-star"></i>
                                         <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
                                         <i class="text-muted fa fa-star"></i>
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
@@ -400,159 +400,6 @@
         </div>
     </div>
 
-    <!-- <table class="table table-hover table-dark">
-    <thead>
-        <tr>
-           
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-	        <th scope="col">Model</th>
-            <th scope="col">Barcode</th>
-            <th scope="col">Price</th>
-	        <th scope="col">Description</th>
-            <th scope="col">Options</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-        
-{% for _ in marketing %}
-
-        <tr>
-                <td>{{marketingdisplay[loop.index0]['id']}}</td>
-                <td>{{marketingdisplay[loop.index0]['name']}}</td>
-		        <td>{{marketingdisplay[loop.index0]['model']}}</td>
-                <td>{{marketingdisplay[loop.index0]['barcode']}}</td>
-                <td>{{marketingdisplay[loop.index0]['price']}}$</td>
-		        <td>{{marketingdisplay[loop.index0]['description']}}</td>
-                <td>
-                        <button class= "btn btn-outline btn-info">More Info</button>
-			<form action="{{url_for('payment')}}" method="POST">
-
-				<input type = "hidden" name = "amount" value = "{{marketing[loop.index0]['price']}}">
-				<input type = "hidden" name = "description" value = "{{marketing[loop.index0]['description']}}">
-  <script
-    src="https://checkout.stripe.com/checkout.js"
-    class="stripe-button"
-    data-key="pk_test_51N0L1ICDqTHHVoreuFuzby1LMly59U7GQNPfM2kaNvLDkDyWsKGvJldVNlcXFOhJ7kwrnaVaaXoea4Hhluy3pa9000XXVuHYgJ"
-    data-name="{{marketing[loop.index0]['name']}}"
-    data-description="{{marketing[loop.index0]['description']}}"
-    data-amount="{{marketing[loop.index0]['price']}}"
-    data-currency="usd"
-    data-label="Pay">
-  </script>
-</form>
- </td>
-        </tr>
-        {% endfor %}
-
-    </tbody>
-</table> -->
-    <!-- End Content -->
-
-    <!-- Start Brands -->
-    <section class="bg-light py-5">
-        <div class="container my-4">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Our Brands</h1>
-                    <p>
-                        What we connect buyers and sellers with are the best of the best. 
-                        Our brands includes the best around the globel.
-                    </p>
-                </div>
-                <div class="col-lg-9 m-auto tempaltemo-carousel">
-                    <div class="row d-flex flex-row">
-                        <!--Controls-->
-                        <div class="col-1 align-self-center">
-                            <a class="h1" href="#multi-item-example" role="button" data-bs-slide="prev">
-                                <i class="text-light fas fa-chevron-left"></i>
-                            </a>
-                        </div>
-                        <!--End Controls-->
-
-                        <!--Carousel Wrapper-->
-                        <div class="col">
-                            <div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="multi-item-example" data-bs-ride="carousel">
-                                <!--Slides-->
-                                <div class="carousel-inner product-links-wap" role="listbox">
-
-                                    <!--First slide-->
-                                    <div class="carousel-item active">
-                                        <div class="row">
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_01.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_02.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_03.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_04.png" alt="Brand Logo"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End First slide-->
-
-                                    <!--Second slide-->
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_01.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_02.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_03.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_04.png" alt="Brand Logo"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End Second slide-->
-
-                                    <!--Third slide-->
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_01.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_02.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_03.png" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="static/styles/img/brand_04.png" alt="Brand Logo"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--End Third slide-->
-
-                                </div>
-                                <!--End Slides-->
-                            </div>
-                        </div>
-                        <!--End Carousel Wrapper-->
-
-                        <!--Controls-->
-                        <div class="col-1 align-self-center">
-                            <a class="h1" href="#multi-item-example" role="button" data-bs-slide="next">
-                                <i class="text-light fas fa-chevron-right"></i>
-                            </a>
-                        </div>
-                        <!--End Controls-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--End Brands-->
 {% endblock %}
 </body>
 
