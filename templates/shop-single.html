@@ -188,8 +188,9 @@
                                 <div class="row pb-3">
                                     {% for _ in marketing %}
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="{{marketing[loop.index0]['price']}}">
-                                            <script
+					    <button type="submit" action= "{{url_for('payment')}}" method= "POST" class="btn btn-success btn-lg" name="submit" value="{{marketing[loop.index0]['price']}}">
+                         
+						<script
                                                 src="https://checkout.stripe.com/checkout.js"
                                                 class="stripe-button"
                                                 data-key="pk_test_51N0L1ICDqTHHVoreuFuzby1LMly59U7GQNPfM2kaNvLDkDyWsKGvJldVNlcXFOhJ7kwrnaVaaXoea4Hhluy3pa9000XXVuHYgJ"
